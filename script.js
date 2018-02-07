@@ -1,10 +1,11 @@
 document.body.appendChild(function() {
   var code = function() {
-    var removeGroupNames = ["G0GAEGA3C", "G63PY1A5D"];
+    var removeGroupNames = ["G0GAEGA3C"];
 
     // 通知系をフックして特定のグループは何もしない
-    var growlImMessage = TS.ui.growls.growlImMessage
     var growlChannelOrGroupMessage = TS.ui.growls.growlChannelOrGroupMessage
+    var growlImMessage = TS.ui.growls.growlImMessage
+    var updateTotalUnreadDisplays = TS.ui.growls.updateTotalUnreadDisplays
     TS.ui.growls.growlChannelOrGroupMessage = function(t, i, n, a) {
       if (removeGroupNames.indexOf(t.id) == 0) {
         // nop
@@ -20,6 +21,14 @@ document.body.appendChild(function() {
         return;
       }
       growlImMessage(t, i, n, a);
+    }
+    TS.ui.growls.updateTotalUnreadDisplays = function(t, i) {
+      if (removeGroupNames.indexOf(t.id) == 0) {
+        // nop
+        console.log("test");
+        return;
+      }
+      updateTotalUnreadDisplays(t, i)
     }
 
     var removeGroupDOM = function(target) {
