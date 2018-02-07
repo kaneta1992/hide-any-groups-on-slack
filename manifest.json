@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Hide Any Groups on Slack",
+  "short_name": "Hide Any Groups on Slack",
+  "description": "Slack上の任意のチャンネルやダイレクトメッセージを非表示にします(Hide any channels or direct messages on slack)",
+  "version" : "1.0",
+  "content_scripts":[
+    {
+      "matches" : [ "https://*.slack.com/*"],
+      "js": ["script.js"],
+      "run_at" : "document_end"
+    }
+  ]
+}
