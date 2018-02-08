@@ -1,6 +1,6 @@
 document.body.appendChild(function() {
   var code = function() {
-    var removeGroupNames = ["G0GAEGA3C", "G63PY1A5D"];
+    var removeGroupNames = ["G0GAEGA3C"];
 
     // 通知系をフックして特定のグループは何もしない
     var growlImMessage = TS.ui.growls.growlImMessage
@@ -33,13 +33,16 @@ document.body.appendChild(function() {
       }
     }
 
-    // 苦肉の策で1分削除し続ける
+    // 苦肉の策で1分DOMを変更し続ける
     var timer = setInterval(function() {
       console.log("remove");
       removeGroupNames.forEach(function(group) {
         var targetDOM = $("a[href = '/messages/" + group + "']");
         removeGroupDOM(targetDOM);
       })
+
+      // Direct Messages 無効
+      $("button[aria-label = 'Open a direct message']").prop("disabled", true);
     }, 500);
     setTimeout(function() {
       clearInterval(timer);
