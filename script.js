@@ -23,10 +23,10 @@ document.body.appendChild(function() {
     }
 
     var removeGroupDOM = function(target) {
-      // 消したい要素が親だったり親の親だったりするので最大で3世代まで遡ってclass属性の有無で判定
+      // 消したい要素が親だったり親の親だったりするので最大で3世代まで遡ってrole属性の有無で判定
       for (var i = 0; i < 3; i++) {
         target = target.parent();
-        if (!target.attr("class")) {
+        if (!target.attr("role")) {
           target.remove();
           return;
         }
