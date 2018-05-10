@@ -43,7 +43,13 @@ document.body.appendChild(function() {
       })
 
       // Direct Messages 無効
-      $("button[aria-label = 'Open a direct message']").prop("disabled", true);
+      var direct_messages_button = $("button[aria-label = 'Open a direct message']");
+      direct_messages_button.replaceWith(function() {
+          return $("<div>", {
+                      "class": $(this).attr('class'),
+                      html: $(this).html(),
+                  });
+      });
     }, 500);
     setTimeout(function() {
       clearInterval(timer);
