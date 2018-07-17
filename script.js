@@ -1,6 +1,6 @@
 document.body.appendChild(function() {
   var code = function() {
-    var hideGroupNames = ["G0GAEGA3C"];
+    var hideGroupNames = ["G0GAEGA3C", "GB90V921H", "C0HNC1E6N", "C9M5E7G74"];
 
     // 通知系をフックして特定のグループは何もしない
     var growlImMessage = TS.ui.growls.growlImMessage
